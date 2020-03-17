@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod">
+        <!-- Constructor Injection
+        <constructor-arg ref="apple"/>
+        <constructor-arg value="2700000"/>-->
+        <property name="speaker" ref="apple"/>
+        <property name="price" value="2700000"/>
+    </bean>
+
+    <bean id="sony" class="polymorphism.SonySpeaker"/>
+
+    <bean id="apple" class="polymorphism.AppleSpeaker"/>
+</beans>
