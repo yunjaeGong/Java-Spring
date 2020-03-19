@@ -5,6 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
  		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!--객체는 순서대로 생성됨-->
+
 	<bean id="studentDao" class="ems.member.dao.StudentDao" ></bean>
 	
 	
@@ -27,16 +29,13 @@
 	<bean id="allSelectService" class="ems.member.service.StudentAllSelectService">
 		<constructor-arg ref="studentDao" ></constructor-arg>
 	</bean>
-
-	<!--같은 클래스 DataBaseConnectionInfo에서 두 객체 dev/real 생성.-->
-	<!--Dev Server-->
+	
 	<bean id="dataBaseConnectionInfoDev" class="ems.member.DataBaseConnectionInfo">
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="userId" value="scott" />
 		<property name="userPw" value="tiger" />
 	</bean>
-
-	<!--Real Server-->
+	
 	<bean id="dataBaseConnectionInfoReal" class="ems.member.DataBaseConnectionInfo">
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.1:1521:xe" />
 		<property name="userId" value="masterid" />
