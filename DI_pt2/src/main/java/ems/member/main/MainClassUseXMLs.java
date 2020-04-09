@@ -41,7 +41,7 @@ public class MainClassUseXMLs {
 //		StudentAssembler assembler = new StudentAssembler();
 		String[] appCtxs = {"classpath:appCtx1.xml", "classpath:appCtx2.xml", "classpath:appCtx3.xml"};
 		GenericXmlApplicationContext ctx = 
-				new GenericXmlApplicationContext(appCtxs);
+				new GenericXmlApplicationContext(appCtxs); // 다중 xml 이용
 		
 		EMSInformationService informationService = ctx.getBean("informationService", EMSInformationService.class);
 		informationService.outputEMSInformation();
