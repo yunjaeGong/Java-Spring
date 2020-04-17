@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao객체 생성 -->
+	<bean id="wordDao" class="com.word.dao.WordDao" />
+
+	<!-- registerService객체 생성 -->
+	<!-- registerService 생성자에 위에서 만든 wordDao 객체 주입 -->
+	<bean id="registerService" class="com.word.service.WordRegisterService">
+		<constructor-arg ref="wordDao" />
+	</bean>
+
+	<!-- searchService객체 생성 -->
+	<!-- searchService 생성자에 위에서 만든 wordDao 객체 주입 -->
+	<bean id="searchService" class="com.word.service.WordSearchService">
+		<constructor-arg ref="wordDao" />
+	</bean>
+	
+</beans>
