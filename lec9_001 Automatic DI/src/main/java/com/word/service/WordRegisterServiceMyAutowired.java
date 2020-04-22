@@ -3,11 +3,17 @@ package com.word.service;
 import com.word.WordSet;
 import com.word.dao.WordDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public class WordRegisterServiceMyAutowired {
-	@Resource
+	/*@Autowired(required = false) // Bean 존재하지 않으면 DI 하지 않음
+	@Qualifier("usedDao")*/
+	@Inject
+	@Named(value="wordDao1")
 	private WordDao wordDao;
 
 	public WordRegisterServiceMyAutowired() {
