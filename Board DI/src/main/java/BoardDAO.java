@@ -8,7 +8,7 @@ import com.mysql.cj.protocol.Resultset;
 import org.springframework.stereotype.Repository;
 
 @Repository("boardDAO")
-public class BoardDAO {
+public class BoardDAO implements BoardService {
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs;
@@ -21,6 +21,7 @@ public class BoardDAO {
     private final String BOARD_LIST = "select * from board order by seq desc";
 
     // CRUD
+    @Override
     public void insertBoard(BoardDTO dto) {
         System.out.println("==> JDBC로 insertBoard()기능 처리");
         try {
@@ -37,6 +38,7 @@ public class BoardDAO {
         }
     }
 
+    @Override
     public void updateBoard(BoardDTO dto) {
         System.out.println("==> JDBC로 updateBoard()기능 처리");
         try {
@@ -53,6 +55,7 @@ public class BoardDAO {
         }
     }
 
+    @Override
     public void deleteBoard(BoardDTO dto) {
         System.out.println("==> JDBC로 deleteBoard()기능 처리");
         try {
@@ -67,6 +70,7 @@ public class BoardDAO {
         }
     }
 
+    @Override
     public BoardDTO getBoard(BoardDTO dto) {
         System.out.println("==> JDBC로 getBoard()기능 처리");
         BoardDTO board = null;
@@ -92,6 +96,7 @@ public class BoardDAO {
         return board;
     }
 
+    @Override
     public List<BoardDTO> getBoardList(BoardDTO dto) {
         System.out.println("==> JDBC로 getBoardList()기능 처리");
         List<BoardDTO> boardList = new ArrayList<>();
