@@ -1,5 +1,6 @@
+package biz.board;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class BoardDTO {
     // Data Transfer Object - 레이어와 레이어 사이에서 연관 데이터를 한꺼번에 주고 받음
@@ -7,7 +8,7 @@ public class BoardDTO {
     private String title;
     private String writer;
     private String content;
-    private Date regDate;
+    private Timestamp regDate;
     private int cnt;
 
     public int getSeq() {
@@ -42,11 +43,11 @@ public class BoardDTO {
         this.content = content;
     }
 
-    public Date getRegDate() {
+    public Timestamp getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(Timestamp regDate) {
         this.regDate = regDate;
     }
 
@@ -60,7 +61,7 @@ public class BoardDTO {
 
     @Override
     public String toString() {
-        return "BoardDTO [seq=" + seq + ", title=" + title + ", writer= " + writer
+        return "board.BoardDTO [seq=" + seq + ", title=" + title + ", writer= " + writer
                 + ", content= " + content + ", regDate= " + regDate + ", cnt=" + cnt +"]";
     }
 }

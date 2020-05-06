@@ -1,8 +1,13 @@
+package biz.board.impl;
+
+import biz.board.BoardDTO;
+import biz.board.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class BoardServiceImpl implements BoardService{
+@Service("boardService")
+public class BoardServiceImpl implements BoardService {
     @Autowired
     private BoardDAO boardDAO;
 

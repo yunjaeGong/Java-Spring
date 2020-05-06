@@ -1,10 +1,14 @@
+package biz.board.impl;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.protocol.Resultset;
+import biz.*;
+import biz.board.BoardDTO;
+import biz.board.BoardService;
 import org.springframework.stereotype.Repository;
 
 @Repository("boardDAO")
@@ -13,8 +17,7 @@ public class BoardDAO implements BoardService {
     private PreparedStatement pstmt = null;
     private ResultSet rs;
 
-    private final String BOARD_INSERT = "insert into board(seq, title, writer, content)" +
-            " values((select nvl(max(seq), 0)+1 from board),?,?,?";
+    private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select ifnull(max(b.seq), 0)+1 from board as b),?,?,?)";
     private final String BOARD_UPDATE = "update board set title=?, content=?, where seq=?";
     private final String BOARD_GET = "select * from board where seq=?";
     private final String BOARD_DELETE = "delete board where seq=?";
@@ -85,7 +88,7 @@ public class BoardDAO implements BoardService {
                 board.setTitle(rs.getString("TITLE"));
                 board.setWriter(rs.getString("Writer"));
                 board.setContent(rs.getString("Content"));
-                board.setRegDate(rs.getDate("REGDATE"));
+                board.setRegDate(rs.getTimestamp("REGDATE"));
                 board.setCnt(rs.getInt("CNT"));
             }
         } catch (Exception e) {
@@ -110,7 +113,7 @@ public class BoardDAO implements BoardService {
                 board.setTitle(rs.getString("TITLE"));
                 board.setWriter(rs.getString("Writer"));
                 board.setContent(rs.getString("Content"));
-                board.setRegDate(rs.getDate("REGDATE"));
+                board.setRegDate(rs.getTimestamp("REGDATE"));
                 board.setCnt(rs.getInt("CNT"));
                 boardList.add(board);
             }

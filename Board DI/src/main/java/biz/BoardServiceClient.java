@@ -1,3 +1,7 @@
+package biz;
+
+import biz.board.BoardDTO;
+import biz.board.BoardService;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -9,7 +13,7 @@ public class BoardServiceClient {
         AbstractApplicationContext container =
                 new GenericXmlApplicationContext("applicationContext.xml");
 
-        // Spring 컨테이너로부터 BoardServiceImpl 객체 Lookup
+        // Spring 컨테이너로부터 impl.BoardServiceImpl 객체 Lookup
         BoardService boardService = (BoardService) container.getBean("boardService");
 
         // 글 등록 가능 테스트
