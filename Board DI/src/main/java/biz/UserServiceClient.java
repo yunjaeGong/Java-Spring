@@ -14,18 +14,20 @@ public class UserServiceClient {
                 new GenericXmlApplicationContext("applicationContext.xml");
 
         // Spring 컨테이너로부터 impl.BoardServiceImpl 객체 Lookup
-        UserService boardService = (UserService) container.getBean("userService");
+        UserService userService = (UserService) container.getBean("userService");
 
         // 글 등록 가능 테스트
-        UserDTO dto = new UserService();
-        dto.setId("test");
-        dto.setPassword("test123");
+        UserDTO dto = new UserDTO();
+        /*dto.setId("test");
+        dto.setPassword("test123");*/
+        dto.setId("user1");
+        dto.setPassword("user1");
 
-        // 글 목록 검색 기능 테스트
-        List<BoardDTO> boardDTOList = boardService.getBoardList(dto);
-        for(BoardDTO board : boardDTOList) {
-            System.out.println("---> " + board.toString());
-        }
+        UserDTO user = userService.getUser(dto);
+        if(user != null)
+            System.out.println(user.getName() + "님 환영합니다.");
+        else
+            System.out.println("로그인 실패");
 
         // Spring 컨테이너 종료
         container.close();

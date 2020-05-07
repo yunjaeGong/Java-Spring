@@ -12,7 +12,7 @@ public class UserDAO implements UserService {
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
 
-    private final String USER_GET = "select * from board where id=? and password=?";
+    private final String USER_GET = "select * from users where ID=? and PASSWORD=?";
 
     @Override
     public UserDTO getUser(UserDTO dto) {
@@ -24,7 +24,7 @@ public class UserDAO implements UserService {
             pstmt.setString(1, dto.getId());
             pstmt.setString(2, dto.getPassword());
             rs = pstmt.executeQuery();
-            if(!rs.next()) {
+            if(rs.next()) {
                 user = new UserDTO();
                 user.setId(rs.getString("ID"));
                 user.setPassword(rs.getString("PASSWORD"));

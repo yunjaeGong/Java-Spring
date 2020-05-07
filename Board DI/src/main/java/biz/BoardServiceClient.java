@@ -18,9 +18,9 @@ public class BoardServiceClient {
 
         // 글 등록 가능 테스트
         BoardDTO dto = new BoardDTO();
-        dto.setTitle("임시 제목");
+        dto.setTitle("제목1");
         dto.setWriter("공윤재");
-        dto.setContent("---------임시 내용---------");
+        dto.setContent("---------내용---------");
         boardService.insertBoard(dto);
 
         // 글 목록 검색 기능 테스트
